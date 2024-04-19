@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <p class="title">Реализация web алгоритмов</p>
+        </div>
+        <div class="algsContainer">
+            <a class='navLink'href="#logo">Кластеризация</a>
+            <a class='navLink'href="#genetic-algoritm-name">Генетический алгоритм</a>
+            <a class='navLink'href="#ant-name">Муравьиный алгоритм</a>
+            <a class='navLink' href="#neural-network-title">Нейронная сеть</a>
+        </div>
+    </div>
+    <div class="classterisation">
+        <input type="checkbox" id="nav-toggle" hidden>
+        
+        <div id = "logo">
+            <p>Кластеризация</p>
+        </div>
+        <div class="wrapper" id="wrapper">
+    
+            <div class="secondCanvas">
+                <label>Алгоритм DBSCAN</label>
+                <canvas id="canvasDBSCAN"></canvas>
+            </div>
+            
+            <div class = "firstCanvas">
+                <label>Алгоритм K-Means++</label>
+                <canvas id="canvasKMeans"></canvas>
+            </div>
+            
+            <div class="thirdCanvas">
+                <label>Иерархический алгоритм</label>
+                <canvas id="canvas3"></canvas>
+            </div>
+        </div>
+    
+        <div class="settings">
+            
+    
+            <div class = "settingsBars">
+                <div class = "generalBar">
+                    <label> <b>Общие настройки: </b> </label>
+                    <div class="distanceBlock">
+                        <label>Расстояние: </label>
+                        <select id="distanceBox">
+                            <option value="1" selected>Евклидово</option>
+                            <option value="2">Манхэттенское</option>
+                            <option value="3">Чебышева</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="dbscanBar">
+                    <label> <b>Настройки DBSCAN: </b> </label>
+                    <div>
+                        <input type="range" id="rangeRadius" min="10" max="50" step="2" value ="26">
+                        <span id="radiusValue" value = "Радиус поиска точек: 26"></span>
+                    </div>
+                    <div>
+                        <input type="range" id="rangePoints" min="3" max="15" step="1" value ="4">
+                        <span id="pointsValue" value = "Количество точек в округе: 4"></span>
+                    </div>
+                </div>
+        
+                <div class="kMeansBar">
+                    <label> <b>Настройки K-Means: </b></label>
+                    <div>
+                        <input type="range" id="rangeKMeans" min="1" max="30" step="1" value ="3">
+                        <span id="rangeValue" value = "Количество кластеров: 3"></span>
+                    </div>
+                </div>
+        
+                <div class="hierarchicalBar">
+                    <label> <b>Настройки Hierarchical: </b> </label>
+                    <div>
+                        <input type="range" id="rangeHierarchical" min="1" max="30" step="1" value ="3">
+                        <span id="rangeValueHierarchical" value = "Количество кластеров: 3"></span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class = "toolbar">
+                <div class="chooseBar">
+                    <input type="button" class="button" id="addPointButton" value="Добавить точки">
+                    <input type="button" class="button" id="removePointButton" value="Удалить точки">
+                    <input type="button" class="button" id="doAllPointsBlack" value="Сбросить точки">
+                    <input type="button" class="button" id="clearButton" value="Очистить поле">
+                </div>  
+                <div class = "start">
+                    <button class="startAlgorithms" id = "startAlgorithms">ПУСК</button>
+                </div>    
+            </div>
+    
+        </div>
+    
+    </div>
+    <div id = "genetic-algoritm">
+        <div class="genetic-title">
+            <label id="genetic-algoritm-name">Генетический алгоритм</label>
+        </div>
+        <div id ="genetic-canvasDiv">
+            <canvas id = "genetic-canvas" width = "800" height = "500"></canvas>
+        </div>
+        <div id ="genetic-settings">
+
+            <div id = "genetic-input">
+                <div id = "genetic-rangeLabel">Скорость анимации:</div>
+                <span id = "genetic-counter">100%</span>
+                <input type = "range" class="genetic-range" id = "genetic-inputRange" value = "100" min = "10" max = "100" step = "5">
+            </div>
+
+            <div id = "genetic-population">
+                <div id = "populationLabel">Кол-во решений в популяции:</div>
+                <span id = "genetic-populationCounter">1500</span>
+                <input type = "range" class="genetic-range" id = "genetic-populationRange" value = "1500" min = "100" max = "2000" step = "10">
+            </div>
+
+            <div id = "genetic-childs">
+                <div id = "childsLabel">Кол-во детей при скрещивании:</div>
+                <span id = "genetic-childsCounter">1500</span>
+                <input type = "range" class="genetic-range" id = "genetic-childsRange" value = "1500" min = "100" max = "2000" step = "10">
+            </div>
+
+            <div id = "genetic-mutation">
+                <div id = "mutationLabel">Вероятность мутации:</div>
+                <span id = "genetic-mutationCounter">70</span>
+                <input type = "range" class="genetic-range" id = "genetic-mutationRange" value = "70" min = "0" max = "100" step = "1">
+            </div>
+            <div id="genetic-fullGraphBox">
+                <input class="genetic-range" type="checkbox" id ="fullGraph">
+                <label for ="fullGraph" id = "genetic-fullGraphLabel">Построить полный граф</label>
+            </div>
+        </div>
+        <div id = "genetic-buttons">
+            <button class="genetic-button" id = "findPathButton">Найти путь</button>
+            <button class="genetic-button" id = "deleteVertexButton">Удаление вершин: ВЫКЛ</button>
+            <button class="genetic-button" id = "genetic-clearButton">Очистить поле</button>
+        </div>
+    </div>
+    <div class="ant-algoritm">
+        <div class="title">
+            <label id = "ant-name"> Муравьиный алгоритм</label>
+        </div>
+        <div class="ant">    
+             <canvas id = "ant-canvas" width = "700px" height = "500px"></canvas>
+        <div id = "ant-inputBlock">
+            
+        <div id = "ant-interface">
+            <div id = "ant-input">
+                <div id = "ant-rangeLabel">Количество муравьев:</div>
+                <input class="ant-range" type = "range" id = "ant-inputRange" value = "50" min = "10" max = "1000" step = "10">
+                <span id = "ant-counter">50</span>
+                
+            </div>
+            <div id = "ant-input">
+                <div id = "ant-iterationLabel">Количество итераций:</div>
+                <input class="ant-range" type = "range" id = "ant-iterationRange" value = "200" min = "50" max = "2000" step = "50">
+                <span id = "ant-counterIteration">200</span>
+                
+            </div>
+            <div id = "ant-input">
+                <div id = "ant-rhoLabel">Скорость испарения феромонов:</div>
+                <input class="ant-range" type = "range" id = "ant-rhoRange" value = "0.5" min = "0.1" max = "0.7" step = "0.1">
+                <span id = "ant-counterRHO">0.5</span>
+                
+            </div>
+            <div id = "ant-input">
+                <div id = "ant-linesLable">Отображение всех ребер графа:</div>
+                <input class="ant-range" type="checkbox" id="getLines">
+            </div>
+        </div>
+        <div class="ant-buttons">
+            <button class="ant-button" id = "ant-findPathButton">Найти путь</button>
+            <button class="ant-button" id = "ant-addVertexButton">Добавить вершину <b>ВЫКЛ</b></button>
+            <button class="ant-button" id = "ant-deleteVertexButton">Удалить вершину <b>ВЫКЛ</b></button>
+            <button class="ant-button" id = "ant-clearButton">Очистить поле</button>
+        </div>
+    </div>
+</div>
+
+    <div class="blink red" id = "done" style="display: none; ">
+        МАРШРУТ НАЙДЕН!
+    </div>
+
+    <div class="blink red" id = "warning" style="display: none; ">
+        WARNING! ИДЕТ ВЫПОЛНЕНИЕ АЛГОРИТМА!
+        <div>
+            ИТЕРАЦИЯ: 
+            <span id = "nowIteration">1</span>
+            /
+            <span id = "allIterations">200</span>
+        </div>
+    </div>
+    </div>
+    <div class="neural-network">
+        <div class="neural-container">
+            <p class="neural-title" id="neural-network-title">Нейронная сеть</p>
+            <div class="neural-containerInner">
+                <canvas id="neural-drawField" style="width: 400px; height: 400px; border:2px solid rgba(29, 36, 69, 1); border-radius: 10px;"></canvas>
+            </div>
+            <div class="neural-containerInner">
+                <label class="neural-brushSizeLabel">Размер кисти:</label>
+                <input id="neural-brushSize" type="range" min="5" max="30" value="13"/>
+            </div>
+            <div class="neural-containerInner">
+                <canvas id="neural-cnv" style="width: 150px; height: 150px; border:2px solid rgba(29, 36, 69, 1); border-radius: 10px;"></canvas>
+            </div>
+            <div class="neural-containerInner">
+                <button class="neural-button" id="neural-clearButton">Стереть рисунок</button>
+            </div>
+            <div class="neural-containerInner">
+                <p id="neural-answerLabel"></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./script.js"></script>
+    <script type='module' src="./clustering/main.js"></script>
+    <script src="./genetic/settings.js" type = "module"></script>
+    <script src="./antAlgorithm/antBased/antPage.js" type = "module"></script>
+    <script type="module" src="./neural_network/neural_network.js"></script>
+    <script src="./neural_network/nn.js"></script>
+
+</body>
+</html>
